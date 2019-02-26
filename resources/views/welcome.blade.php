@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo')
-We Are - Home
+Bienvenido a We Are!
 @endsection
 
 @section('content')
