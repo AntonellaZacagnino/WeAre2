@@ -64,10 +64,17 @@ body {
 }
 .boton {
   border-radius: 10px;
+  background-color: white;
   border: 1px solid white;
   margin-left: 15px;
   height: 30px;
   width: 110px;
+}
+
+.boton:hover {
+background: #efd2c2;
+color: white;
+box-shadow: inset 0 0 0 3px #efd2c2;
 }
 
 .boton a {
@@ -86,6 +93,12 @@ body {
   background-color: #da5912;
   color: white;
 }
+
+.boton-form:hover {
+  background: white;
+  color: #da5912;
+  box-shadow: inset 0 0 0 3px #da5912;
+}
 footer{
   background-color: #ce6b34;
   position: fixed;
@@ -103,5 +116,25 @@ footer{
 
 ul a {
   color: white;
+
+}
+
+ul a:hover {
+  color: #522d19;
+
+}
+
+.carousel-caption {
+  background-color: rgba(255, 255, 255, 0.5);
+  color:black;
+  border-radius: 25px;
+}
+
+.carrusel {
+  margin-top: 60px;
+  float: left;
+  width: 49%;
+  margin-left: 10px;
+
 
 }
