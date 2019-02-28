@@ -5,8 +5,6 @@ Bienvenido a We Are!
 @endsection
 
 @section('content')
-
-          <link rel="stylesheet" href="/public/css/app.css">
           <div class="caja">
             <br>
             <br>
@@ -64,6 +62,8 @@ Somos WeAre. Bienvenido!
          </div>
         </div>
       </div>
+
+      <script src="{{asset("js/home.js")}}"></script>
 
 @endsection
 

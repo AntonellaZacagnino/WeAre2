@@ -11,11 +11,11 @@ class UserController extends Controller
       $this->middleware('auth');
   }
 
-  public function detalle($auth) {
+  public function detalle() {
 
-    $usuario = User::find($auth);
+    // $usuario = Auth::user()->user;
 
 
-    return view("/miPerfil", compact("usuario"));
+    return view("/miPerfil");
   }
 }

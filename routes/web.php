@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/miPerfil', 'UserController@personal');
+Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
