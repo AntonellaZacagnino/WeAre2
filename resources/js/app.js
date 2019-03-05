@@ -22,6 +22,10 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.http.interceptors.push(function (request, next) {
+request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+next();
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

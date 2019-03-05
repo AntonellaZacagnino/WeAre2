@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('titulo')
-Bienvenido a We Are!
+We Are - Home
 @endsection
 
 @section('content')
+
+          <link rel="stylesheet" href="/public/css/app.css">
           <div class="caja">
             <br>
             <br>
@@ -19,7 +21,7 @@ Somos WeAre. Bienvenido!
             </p>
           </div>
         </div>
-        <div class="carrusel">
+        <div class="flex-row-reverse">
           <div class="d-flex justify-content-end">
            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
              <ol class="carousel-indicators">
@@ -29,24 +31,24 @@ Somos WeAre. Bienvenido!
              </ol>
              <div class="carousel-inner">
                <div class="carousel-item active">
-                 <img class="img-fluid" src="images/modelo.png" alt="First slide">
+                 <img class="img-fluid" src="images/foto.png" alt="First slide">
                  <div class="carousel-caption">
-                   <h5  class="text-light bg-warning">Rosalía - Modelo</h5>
-                   <p class="text-black">"No solo encontré campañas, encontré amigos y cientos de experiencias"</p>
+                   <h5>Hola</h5>
+                   <p>holaholahola</p>
                  </div>
                </div>
                <div class="carousel-item">
-                 <img class="img-fluid" src="images/photographer.png" alt="Second slide">
+                 <img class="img-fluid" src="images/foto.png" alt="Second slide">
                  <div class="carousel-caption">
-                   <h5 class="text-light bg-warning">Melanie - Fotógrafa</h5>
-                   <p class="text-black">"Gracias a WeAre pude armar mi portafolio y comenzar como fotógrafa. Esto me llena el alma"</p>
+                   <h5>como estas</h5>
+                   <p>como estascomo estascomo estascomo estas</p>
                  </div>
                </div>
                <div class="carousel-item">
-                 <img class="img-fluid" src="images/productor.png" alt="Third slide">
+                 <img class="img-fluid" src="images/foto.png" alt="Third slide">
                  <div class="carousel-caption">
-                   <h5 class="text-light bg-warning">DeFernandez - Productor</h5>
-                  <p class="text-black">"Siempre quise viajar para trabajar de lo que amo, desde WeAre pude cumplir mi sueño"</p>
+                   <h5>todo bien</h5>
+                   <p>todo bientodo bientodo bientodo bien</p>
                  </div>
                </div>
              </div>
@@ -62,8 +64,6 @@ Somos WeAre. Bienvenido!
          </div>
         </div>
       </div>
-
-      <script src="{{asset("js/home.js")}}"></script>
 
 @endsection
 

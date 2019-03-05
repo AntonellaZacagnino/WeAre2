@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user', 'email', 'password',
+        'name', 'user', 'email', 'password', 'profession', 'country', 'birthday_date'
     ];
 
     /**
@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function seguidores() {
+      return $this->belongsToMany(follower::class, "user_id");
+    }
+
+    public function seguidos() {
+      return $this->hasMany(followed::class, "user_id");
+    }
+
+
 }

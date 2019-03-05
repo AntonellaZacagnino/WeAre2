@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
+
+
+Route::get("/seguidores", "followerController@listado");
+
+Route::get("/seguidos", "followedController@listado");
+
+Route::post("/eliminarSeguidor", "followedController@eliminar")->middleware("auth");
+
+Route::get("/agregarmessage", "messagesController@agregar")->middleware("auth");
+
+Route::post("/agregarmessage", "messagesController@almacenar")->middleware("auth");
+
+Route::get("/usuario/{id}", "UserController@verPerfil")->middleware("auth");
