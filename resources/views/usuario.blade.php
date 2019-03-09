@@ -4,7 +4,7 @@
 Perfil de
 @endsection
 
-@section('contain')
+@section('content')
 <ul>
   <li>Nombre: {{$usuario->name}}</li>
   <li>Fecha de nacimiento: {{$usuario->birthday_date}}</li>
