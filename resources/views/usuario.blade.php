@@ -6,9 +6,9 @@ Perfil de
 
 @section('content')
 <ul>
-  <li>Nombre: {{$usuario->name}}</li>
-  <li>Fecha de nacimiento: {{$usuario->birthday_date}}</li>
-  <li>Profesión: {{$usuario->profession}}</li>
+  <li>Nombre: {{ Auth::user()->user }}</li>
+  <li>Vive en: {{ Auth::user()->country}}</li>
+  <li>Profesión: {{ Auth::user()->profession }}</li>
 </ul>
 
 @if (Auth::check())
@@ -17,5 +17,18 @@ Perfil de
 
   </div>
 @endif
+
+<h1>Posteos</h1>
+
+<div>
+  @foreach($posteos as $post)
+    <div class="alert alert-warning" role="alert">
+      {{$post->listadoPost()}}
+
+      <input type="submit" class="btn btn-secondary rounded float-right" name="Eliminar" value="Eliminar">
+      <input type="submit" class="btn btn-info rounded float-right" name="Editar" value="Editar">
+    </div><br>
+  @endforeach
+</div>
 
 @endsection

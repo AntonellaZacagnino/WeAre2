@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 use App\User;
 
 class UserController extends Controller
@@ -12,10 +13,15 @@ class UserController extends Controller
       $this->middleware('auth');
   }
 
+  public function agregarInfo() {
+  $generos = User::all();
+  $vac = compact("generos");
+  return view("miPerfil", $vac);
+}
+
   public function detalle() {
 
     // $usuario = Auth::user()->user;
-
 
     return view("/miPerfil");
   }
@@ -63,6 +69,12 @@ class UserController extends Controller
 
     $usuario->save();
 
-    return redirect("miPerfil");
+    return redirect("/miPerfil");
+  }
+
+  public function listadoPost() {
+    $posteos = Post::all();
+    $vac = compact("posteos");
+    return view("usuario", $vac);
   }
 }

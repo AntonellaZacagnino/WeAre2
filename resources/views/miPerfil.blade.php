@@ -85,7 +85,7 @@ Mi perfil
       </div>
       <br>
       <div>
-        <button type="submit" class="boton-form">Enviar</button>
+        <button type="submit" class="boton-form">Guardar</button>
       </div>
 
       </div>
@@ -96,16 +96,6 @@ Mi perfil
 
 <br>
 <br>
-
-<h1>Posteos</h1>
-
-  <ul>
-    @foreach($posteos as $post)
-      <li>
-        {{$post->listadoPost()}}
-      </li>
-    @endforeach
-  </ul>
 
 
 		<script src="/js/perfil.js"></script>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -29,6 +31,7 @@ public function almacenarPosteo(Request $formulario) {
 }
 public function listadoPost() {
   $posteos = Post::all();
+
   $vac = compact("posteos");
   return view("miPerfil", $vac);
 }
