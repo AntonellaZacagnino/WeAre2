@@ -24,11 +24,11 @@ We Are - Home
 
 <h1>Posteos</h1>
 
-<ul>
+<div>
   @foreach($posteos as $post)
-    <li>
+    <div class="alert alert-warning" role="alert">
       {{$post->listadoPost()}}
-    </li>
+    </div><br>
   @endforeach
-</ul>
+</div>
 @endsection
