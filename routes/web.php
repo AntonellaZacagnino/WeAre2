@@ -22,9 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
 
 
-Route::get('/miPerfil', 'PostController@listadoPost')->middleware('auth');
 Route::get('/home', 'HomeController@listadoPost')->middleware('auth');
-Route::get('/usuario', 'UserController@listadoPost')->middleware('auth');
+Route::get('/usuario/{id}', 'UserController@listadoPost')->middleware('auth');
 
 Route::get("/seguidores", "followerController@listado");
 
