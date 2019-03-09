@@ -21,4 +21,14 @@ We Are - Home
         </div>
     </div>
 </div>
+
+<h1>Posteos</h1>
+
+<ul>
+  @foreach($posteos as $post)
+    <li>
+      {{$post->listadoPost()}}
+    </li>
+  @endforeach
+</ul>
 @endsection

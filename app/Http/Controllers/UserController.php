@@ -20,12 +20,10 @@ class UserController extends Controller
     return view("/miPerfil");
   }
 
-  public function verPerfil($id)
+  public function verPerfil($user)
   {
-    $usuario = User::where("id", $id)->first();
-
+    $usuario = User::where("user",$user)->first();
       $vac = compact("usuario");
-
       return view("usuario", $vac);
   }
 

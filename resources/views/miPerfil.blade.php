@@ -96,8 +96,15 @@ Mi perfil
 <br>
 <br>
 
+<h1>Posteos</h1>
 
-
+  <ul>
+    @foreach($posteos as $post)
+      <li>
+        {{$post->listadoPost()}}
+      </li>
+    @endforeach
+  </ul>
 
 
 		<script src="/js/perfil.js"></script>

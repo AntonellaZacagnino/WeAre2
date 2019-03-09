@@ -11,6 +11,11 @@ Perfil de
   <li>Profesión: {{$usuario->profession}}</li>
 </ul>
 
+@if (Auth::check())
+  <div class="">
+    <input type="button" class="btn btn-warning" name="Seguir" value="Seguir">
 
+  </div>
+@endif
 
 @endsection
