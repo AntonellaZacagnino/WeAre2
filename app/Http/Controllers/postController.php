@@ -3,11 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Request\UploadPhoto;
+use App\Photo;
 use App\Post;
 use App\User;
+use Auth;
 
 class PostController extends Controller
 {
+
+  private $userPhotosFolder = "photos";
+
+  public function uploadPhoto (uploadPhoto $request)
+  {
+        $file= $request->file("photo");
+        $description=$request->get("description");
+        $filename= str_random(10) . " . " .$file->getClientOriginalExtension();
+
+        $user= Auth::user();
+        $post=new Post;
+        $file->move($this->usePhotosFolder, $filename);
+
+        $post->user_id = $user->id; ;
+        $post->photo = $filename ;
+        $post->description = $description;
+        $post->save();
+
+        return redirect()->route("home");
+  }
+
+
+
   public function __construct()
 {
     $this->middleware('auth');

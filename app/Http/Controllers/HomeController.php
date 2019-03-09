@@ -33,4 +33,10 @@ class HomeController extends Controller
       $vac = compact("posteos");
       return view("home", $vac);
     }
+
+    public function index()
+    {
+      $posts = Post::orderBy("id", "DESC");
+      return view("home")->with("posts", $posts);
+    }
 }
