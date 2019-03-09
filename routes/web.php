@@ -22,12 +22,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
 
 
-Route::get('/home', 'HomeController@listadoPost')->middleware('auth');
+Route::get('/home', 'HomeController@listadoPost')->middleware('auth')->name('profile');
 Route::get('/usuario/{id}', 'UserController@listadoPost')->middleware('auth');
 
-Route::get("/seguidores", "followerController@listado");
+//F & UF
+Route::get("/seguidos", "followedController@listadofollower");
+Route::get("/seguidos", "followedController@listadofollowed");
 
-Route::get("/seguidos", "followedController@listado");
+//perfil photos
+Route::post("upload_photo", "postController@uploadPhoto")->name("posts.store");
+Route::get('/home', 'HomeController@index');
+
+
+Route::get('edit_profile', 'UserController@editProfile')->name('profile.edit');
+Route::post('update_profile', 'ProfileController@updateProfile')->name('profile.update');
+
+Route::post('update_profile_picture', 'ProfileController@updateProfilePicture')->name('profile.update.picture');
+
+Route::post('upload_photo', 'PostsController@uploadPhoto')->name('posts.store');
+
+/// seguidores
+
 
 Route::post("/eliminarSeguidor", "followedController@eliminar")->middleware("auth");
 

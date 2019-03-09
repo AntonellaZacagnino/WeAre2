@@ -17,4 +17,14 @@ class Post extends Model
       public function postDe() {
         return $this->belongsTo(User::class, "user_id");
       }
+
+      public function getPhotoAttribute(): string{
+        return url("photos/". $this->attributes["photo"]);
+      }
+      
+      public function index ()
+      {
+        $posts = Post::orderBy("id", "DESC");
+        return view("home")->with("posts", $posts);
+      }
 }
