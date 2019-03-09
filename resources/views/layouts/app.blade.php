@@ -29,7 +29,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <img src="/images/logo-1.png" width="180" height="50" alt="logo" class='logo'>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -55,16 +55,24 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->user }} <span class="caret"></span>
+                            <li class="menu-logueado">
+                                <a id="navbarDropdown" class="text-black" href="/usuario/{{Auth::user()->user}}" >
+                                    {{ Auth::user()->user }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                            </li>
+                            <li class="menu-logueado"> || </li>
+                            <li class="menu-logueado">
+                                <a id="navbarDropdown" class="text-black" href="/miPerfil" >
+                                    Editar perfil
+                                </a>
+                            </li>
+                            <li class="menu-logueado"> || </li>
+                            <li class="menu-logueado">
+                                <div class="menu-logueado">
+                                    <a class="text-black" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
+                                      {{ __('Salir') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

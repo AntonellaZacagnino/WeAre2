@@ -9,6 +9,14 @@ body {
   font-family: 'Montserrat';
 }
 
+.titulo{
+  margin-top: 50px;
+  background-color: #f39865;
+  width: 550px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 5px;
+}
 
 .logo {
   margin-left: -40px;
@@ -22,15 +30,29 @@ body {
   margin-top: 60px;
 }
 
+.caja-perfil {
+  margin-left: 20px;
+  padding: 10px;
+  margin-top: 60px;
+  border: 2px solid #d4d4d4;
+  border-radius: 20px;
+  width: 800px;;
+  height: auto;
+}
 .card-header {
-  border: 1px solid #e28d5e;
+  border-top: 1px solid #e28d5e;
+  border-left: 1px solid #e28d5e;
+  border-right: 1px solid #e28d5e;
+  border-bottom: 1px solid #f1ba9c;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #d282555c;
+  background-color: #f1ba9c;
 }
 
 .card-body {
-  border: 1px solid #e28d5e;
+  border-bottom: 1px solid #e28d5e;
+  border-left: 1px solid #e28d5e;
+  border-right: 1px solid #e28d5e;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -45,13 +67,13 @@ body {
 
 .caja {
   width: 49%;
-  height: 50%;
+  height: 420px;
   float: left;
-  margin-top: 50px;
-  border: 1px solid #e28d5e;
-  border-radius: 6px;
+  margin-top: 60px;
+  border: 1px solid #f1ba9c;
+  border-radius: 10px;
   margin-left: 10px;
-  background-color: #d282555c;
+  background-color: #f1ba9c;
 }
 
 .caja p {
@@ -135,6 +157,39 @@ ul a:hover {
   float: left;
   width: 49%;
   margin-left: 10px;
+  max-height: 420px;
+}
 
+.menu-logueado {
+  display: flex;
+  align-self: flex-end;
+  flex-wrap: wrap;
+  margin-left: 5px;;
+  justify-content: space-around;
+}
 
+.menu-logueado a:hover {
+  color: #522d19;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-profile {
+  display: flex;
+  flex-flow: column;
+}
+
+.input {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ce6b34;
+}
+
+.estado {
+  height: 80px;
+  width: 550px;
+  border: 1px solid #d2d1d0;
+  border-radius: 5px;
 }

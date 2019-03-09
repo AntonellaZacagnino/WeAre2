@@ -32,4 +32,14 @@ Route::get("/agregarmessage", "messagesController@agregar")->middleware("auth");
 
 Route::post("/agregarmessage", "messagesController@almacenar")->middleware("auth");
 
-Route::get("/usuario/{id}", "UserController@verPerfil")->middleware("auth");
+Route::get("/usuario/{user}", "UserController@verPerfil")->middleware("auth");
+
+Route::post("/miPerfil", "UserController@editar")->middleware("auth");
+
+Route::post("/miPerfil", "UserController@almacenarDatos")->middleware("auth");
+
+Route::post("/agregarPosteo", "PostController@agregarPosteo")->middleware("auth");
+
+Route::post("/miPerfil", "PostController@almacenarPosteo")->middleware("auth");
+
+Route::post("/eliminarPosteo", "PostController@eliminarPosteo")->middleware("auth");

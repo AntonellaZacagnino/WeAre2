@@ -1,3 +1,4 @@
+window.addEventListener("load", function() {
 console.log('prueba');
 var form = document.querySelector('form');
 // console.log(theForm.elements);
@@ -63,3 +64,4 @@ countriesSelect.onchange = function () {
 		citiesSelect.innerHTML = '';
 	}
 };
+});

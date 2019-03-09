@@ -10,4 +10,7 @@ Perfil de
   <li>Fecha de nacimiento: {{$usuario->birthday_date}}</li>
   <li>Profesión: {{$usuario->profession}}</li>
 </ul>
+
+
+
 @endsection

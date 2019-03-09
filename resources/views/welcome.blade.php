@@ -8,6 +8,8 @@ Bienvenido a We Are!
           <div class="caja">
             <br>
             <br>
+            <br>
+            <br>
             <h3><strong>Bienvenid@ a We Are!</strong></h3>
             <br>
             <p class="texto-inicio">Es una plataforma de encuentro, un escenario donde te da la oportunidad de mostrar lo mejor de vos. Ayudamos a resaltar tu talento y que desde otro lado, te puedan localizar.
