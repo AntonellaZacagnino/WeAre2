@@ -28,15 +28,16 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function listadoPost() {
-      $posteos = Post::all();
-      $vac = compact("posteos");
-      return view("home", $vac);
-    }
 
-    public function index()
-    {
-      $posts = Post::orderBy("id", "DESC");
-      return view("home")->with("posts", $posts);
-    }
+    public function listadoPost() {
+        $posteos = Post::all();
+        $vac = compact("posteos");
+        return view("home", $vac);
+      }
+     /* public function index()
+      {
+        $posts = Post::orderBy("id", "DESC")->get();
+        return view("home")->with("posts", $posts);
+      }*/
+  
 }

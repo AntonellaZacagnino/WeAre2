@@ -1,11 +1,12 @@
 @extends('layouts.app')
-@yield("css")
+
+<!---@yield("css")--->
 
 @section('titulo')
 We Are - Home
 @endsection
 
-@section("css")
+<!---@section("css")
     <style>
         .post {
           padding: 10px;
@@ -17,29 +18,12 @@ We Are - Home
         .post-photo img {
           height: 100%;
         }
-
     </style>
-@endsection
+@endsection --->
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Haz una publicación</div>
-                <form class="card-body" action="/miPerfil" method="post">
-                  {{ csrf_field() }}
-                  <input type="textarea" class="estado" name="postText" placeholder="Dile al mundo lo que tienes para contar...">
-                  <button type="submit" name="button" class='boton-form'>Compartir</button>
-                </form>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
+<!---<div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
@@ -105,14 +89,37 @@ We Are - Home
             </div>
         </div>
     </div>
-</div>
+</div>---->
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Haz una publicación</div>
+                <form class="card-body" action="/miPerfil" method="post">
+                  {{ csrf_field() }}
+                  <input type="textarea" class="estado" name="postText" placeholder="  Dile al mundo lo que tienes para contar...">
+                  <button type="submit" name="button" class='boton-form'>Compartir</button>
+                </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
 <h1>Posteos</h1>
 
-<div>
+<div class="row justify-content-center">
+  <div class="col-md-10">
+   <div class="posteos-home">
   @foreach($posteos as $post)
-    <div class="alert alert-warning" role="alert">
-      {{$post->listadoPost()}}
-    </div><br>
+    <div class="caja-posteo">
+      {{$post->user_id}} : {{$post->listadoPost()}}
+  </div><br>
   @endforeach
+  </div>
+  </div>
 </div>
 @endsection

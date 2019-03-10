@@ -13,26 +13,20 @@ class PostController extends Controller
 {
 
   private $userPhotosFolder = "photos";
-
   public function uploadPhoto (uploadPhoto $request)
   {
         $file= $request->file("photo");
         $description=$request->get("description");
         $filename= str_random(10) . " . " .$file->getClientOriginalExtension();
-
         $user= Auth::user();
         $post=new Post;
         $file->move($this->usePhotosFolder, $filename);
-
         $post->user_id = $user->id; ;
         $post->photo = $filename ;
         $post->description = $description;
         $post->save();
-
         return redirect()->route("home");
   }
-
-
 
   public function __construct()
 {
@@ -51,15 +45,15 @@ public function almacenarPosteo(Request $formulario) {
   $this->validate($formulario, $reglas);
   $post = new Post();
   $post->postText =  $formulario["postText"];
-  $post->users_id = Auth::id();
+  $post->user_id = Auth::id();
   $post->save();
-  return redirect("/miPerfil");
+  return redirect("/home");
 }
-public function listadoPost() {
-  $posteos = Post::all();
+public function listaPost($id) {
+  $post = Post::all($id);
 
-  $vac = compact("posteos");
-  return view("miPerfil", $vac);
+  $vac = compact("post");
+  return view("/usuario/{id}", $vac);
 }
 public function eliminarPosteo(Request $formulario) {
   $idPost = $formulario["idPost"];
