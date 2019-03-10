@@ -56,7 +56,7 @@
                             @endif
                         @else
                             <li class="menu-logueado">
-                                <a id="navbarDropdown" class="text-black" href="/usuario/{{Auth::user()->user}}" >
+                                <a id="navbarDropdown" class="text-black" href="/usuario/{{Auth::user()->id}}" >
                                     {{ Auth::user()->user }}
                                 </a>
                             </li>
@@ -90,12 +90,12 @@
             @yield('content')
         </main>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Scripts 
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- Scripts -->
-    @yield('scripts')
+    
+    @yield('scripts')-->
     <script src="{{asset("js/app.js")}}">
 
     </script>

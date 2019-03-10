@@ -1,24 +1,14 @@
 @extends('layouts.app')
-@yield("scripts")
+
+<!---@yield("scripts")--->
 
 @section('titulo')
-Perfil de
+Perfil de {{ $user->user}}
 @endsection
 
 @section('content')
-<ul>
-  <li>Nombre: {{ Auth::user()->user }}</li>
-  <li>Vive en: {{ Auth::user()->country}}</li>
-  <li>Profesión: {{ Auth::user()->profession }}</li>
-</ul>
 
-@if (Auth::check())
-  <div class="">
-    <input type="button" class="btn btn-warning" name="Seguir" value="Seguir">
-
-  </div>
-@endif
-@extends('layouts.app')
+<!----@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -84,26 +74,37 @@ Perfil de
             </div>
         </div>
     </div>
+</div>---->
+
+<div class="cajita">
+<div class='caja-profile'>
+
+<ul>
+  <li><strong>Nombre: </strong>{{ $user->name }}</li>
+  <li><strong>País: </strong>{{ $user->country}}</li>
+  <li><strong>Provincia: </strong>{{ $user->city  }}</li>
+  <li><strong>Fecha de nacimiento: </strong>{{ $user->birthday_date }}</li>
+  <li><strong>Profesión: </strong>{{ $user->profession }}</li>
+</ul>
+@if (Auth::check())
+  <div class="follow-button">
+    <input type="button" class="boton-form" name="Seguir" value="Seguir">
+
+  </div>
+@endif
 </div>
-
-
-
-<h1>Posteos</h1>
 
 <div>
-  @foreach($posteos as $post)
-    <div class="alert alert-warning" role="alert">
-      {{$post->listadoPost()}}
-
-      <input type="submit" class="btn btn-secondary rounded float-right" name="Eliminar" value="Eliminar">
-      <input type="submit" class="btn btn-info rounded float-right" name="Editar" value="Editar">
-    </div><br>
-  @endforeach
+ <img src="{{$user->avatar}}" class="foto-perfil">
+</div>
 </div>
 
-@endsection
+<div class="posteos">
+  <h2><b style="color:#ce6b34">P</b><u style="text-decoration-color:#ce6b34">ublicaciones</u></h2>
+  
+</div>
 
-@section('scripts')
+<!---@section('scripts')
     <script>
         var app = new Vue({
             el: '#app',
@@ -120,4 +121,9 @@ Perfil de
             }
         });
     </script>
+@endsection--->
+
+
+
+
 @endsection

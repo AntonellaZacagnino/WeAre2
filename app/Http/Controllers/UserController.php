@@ -26,13 +26,18 @@ class UserController extends Controller
     return view("/miPerfil");
   }
 
-  public function verPerfil($user)
+  public function verPerfil($id)
   {
-    $usuario = User::where("user",$user)->first();
-      $vac = compact("usuario");
-      return view("usuario", $vac);
+    $user = User::find($id);
+      
+      return view("usuario")->with('user', $user);
   }
 
+  public function listaPost() {
+    $posteos = Post::all();
+    $vac = compact("posteos");
+    return view("/usuario/{id}", $vac);
+  }
 
   public function editar()
   {
