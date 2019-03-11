@@ -39,5 +39,10 @@ class HomeController extends Controller
         $posts = Post::orderBy("id", "DESC")->get();
         return view("home")->with("posts", $posts);
       }*/
-  
+
+    public function search(Request $req) {
+        $search = $req["search"];
+        $products = User::where("name", "like", "%$search%")->get();
+        return view("search", compact("users"));
+      }
 }

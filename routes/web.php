@@ -17,29 +17,67 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//home
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
-
+Route::get('/home', 'HomeController@index');
 
 Route::get('/home', 'HomeController@listadoPost')->middleware('auth');
-Route::get('/usuario/{id}', 'UserController@listaPost')->middleware('auth');
 
-Route::get("/seguidores", "followerController@listado");
 
-Route::get("/seguidos", "followedController@listado");
+//miPerfil
 
-Route::post("/eliminarSeguidor", "followedController@eliminar")->middleware("auth");
+Route::get('/{username}', 'ProfileController@show');
 
-Route::get("/agregarmessage", "messagesController@agregar")->middleware("auth");
-
-Route::post("/agregarmessage", "messagesController@almacenar")->middleware("auth");
-
-Route::get("/usuario/{id}", "UserController@verPerfil")->name('user');
+Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
 
 Route::post("/miPerfil", "UserController@editar")->middleware("auth");
 
 Route::post("/miPerfil", "UserController@almacenarDatos")->middleware("auth");
+
+Route::get('edit_profile', 'UserController@editProfile')->name('profile.edit');
+
+Route::post('update_profile_picture', 'ProfileController@updateProfilePicture')->name('profile.update.picture');
+
+
+//usuario
+
+Route::get('/usuario/{id}', 'UserController@listaPost')->middleware('auth');
+
+Route::get("/usuario/{id}", "UserController@verPerfil")->name('username');
+
+Route::get("/search", "homeController@search");
+
+//followers
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/follows/{user}', 'UserController@follows');
+    Route::get('/unfollows/{user}', 'UserController@unfollows');
+});
+Route::get('/{user}', 'ProfileController@show');
+Route::get('/{user}/followers', 'ProfileController@followers');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/following', 'ProfileController@following');
+    Route::post('/follows', 'UserController@follows');
+    Route::post('/unfollows', 'UserController@unfollows');
+});
+
+
+Route::get("/follows", "followerController@listadoFollowers");
+
+Route::get("/following", "followedController@listadoFollowing");
+
+
+//mensajería
+
+Route::get("/agregarmessage", "messagesController@agregarMensaje")->middleware("auth");
+
+Route::post("/agregarmessage", "messagesController@almacenarMensaje")->middleware("auth");
+
+
+//Posteo
 
 Route::post("/agregarPosteo", "PostController@agregarPosteo")->middleware("auth");
 
@@ -47,14 +85,9 @@ Route::post("/miPerfil", "PostController@almacenarPosteo")->middleware("auth");
 
 Route::post("/eliminarPosteo", "PostController@eliminarPosteo")->middleware("auth");
 
-Route::get("/seguidos", "followedController@listadofollower");
-Route::get("/seguidos", "followedController@listadofollowed");
-//perfil photos
-Route::post("upload_photo", "postController@uploadPhoto")->name("posts.store");
-Route::get('/home', 'HomeController@index');
-Route::get('edit_profile', 'UserController@editProfile')->name('profile.edit');
-Route::post('update_profile', 'ProfileController@updateProfile')->name('profile.update');
-Route::post('update_profile_picture', 'ProfileController@updateProfilePicture')->name('profile.update.picture');
-Route::post('upload_photo', 'PostsController@uploadPhoto')->name('posts.store');
-/// seguidores
 
+//Photos Post
+
+Route::post("upload_photo", "postController@uploadPhoto")->name("posts.store");
+
+Route::post('upload_photo', 'PostsController@uploadPhoto')->name('posts.store');
