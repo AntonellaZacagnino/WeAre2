@@ -1,12 +1,20 @@
+// resource/views/layouts/profile.blade.php
+
+@section('head')
+<meta name="csrf_token" id="token" content="{{ csrf_token() }}" />
+@endsection
+
+
+
 @extends('layouts.app')
 
 <!---@yield("scripts")--->
 
-@section('titulo')
+<!-- @section('titulo')
 Perfil de {{ $user->user}}
-@endsection
-
-@section('content')
+@endsection -->
+<!--
+@section('content') -->
 
 <!----@extends('layouts.app')
 
@@ -75,7 +83,7 @@ Perfil de {{ $user->user}}
         </div>
     </div>
 </div>---->
-
+<!--
 <div class="cajita">
 <div class='caja-profile'>
 
@@ -101,8 +109,8 @@ Perfil de {{ $user->user}}
 
 <div class="posteos">
   <h2><b style="color:#ce6b34">P</b><u style="text-decoration-color:#ce6b34">ublicaciones</u></h2>
-  
-</div>
+</div> -->
+
 
 <!---@section('scripts')
     <script>
@@ -123,7 +131,85 @@ Perfil de {{ $user->user}}
     </script>
 @endsection--->
 
+<div class="col-md-8">
+ <ul class="nav navbar-nav">
+  <li class="active">
+      <a href="#" class="text-center">
+          <div class="text-uppercase">Tweets</div>
+          <div>0</div>
+      </a>
+  </li>
+  @if ($is_edit_profile)
+  <li>
+      <a href="{{ url('/following') }}" class="text-center">
+          <div class="text-uppercase">Following</div>
+          <div>{{ $following_count }}</div>
+      </a>
+  </li>
+  @endif
+  <li>
+      <a href="{{ url('/' . $user->user . '/followers') }}" class="text-center">
+          <div class="text-uppercase">Followers</div>
+          <div>{{ $followers_count }}</div>
+      </a>
+  </li>
+ </ul>
+</div>
 
 
-
+@if (Auth::check())
+    @if ($is_edit_profile)
+    <a href="#" class="navbar-btn navbar-right">
+        <button type="button" class="btn btn-default">Edit Profile</button>
+    </a>
+    @else
+    <button type="button" v-on:click="follows" class="navbar-btn navbar-right btn btn-default">@{{ followBtnText }}</button>
+    @endif
+@endif
+…
+<!-- <script src="/js/app.js"></script> -->
+<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-resource@1.2.0/dist/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            user: '{{ $user->user }}',
+            isFollowing: {{ $is_following ? 1 : 0 }},
+            followBtnTextArr: ['Follow', 'Unfollow'],
+            followBtnText: ''
+        },
+        methods: {
+            follows: function (event) {
+                var csrfToken = Laravel.csrfToken;
+                var url = this.isFollowing ? '/unfollows' : '/follows';
+                this.$http.post(url, {
+                    'user': this.user
+                }, {
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                })
+                .then(response => {
+                    var data = response.body;
+                    if (!data.status) {
+                        alert(data.message);
+                        return;
+                    }
+                    this.toggleFollowBtnText();
+                });
+            },
+            toggleFollowBtnText: function() {
+                this.isFollowing = (this.isFollowing + 1) % this.followBtnTextArr.length;
+                this.setFollowBtnText();
+            },
+            setFollowBtnText: function() {
+                this.followBtnText = this.followBtnTextArr[this.isFollowing];
+            }
+        },
+        mounted: function() {
+            this.setFollowBtnText();
+        }
+    });
+</script>
 @endsection
