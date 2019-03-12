@@ -64,9 +64,7 @@ Perfil de {{ $user->user}}
 <div class="posteos col-md-7">
   <h2><b style="color:#ce6b34">P</b><u style="text-decoration-color:#ce6b34">ublicaciones</u></h2>
 
-  
 </div>
-
 
 
 

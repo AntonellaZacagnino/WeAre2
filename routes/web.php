@@ -20,10 +20,7 @@ Auth::routes();
  // ----------------------------------- Home --------------------------------------------------------
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth']], function () {
-
-    Route::get('/feed', 'FeedsController@newsFeed');
-    });
+Route::get('/home', 'postController@listarPost');
 
  // --------------------------- Perfil de usuario logueado -------------------------------------------
 
