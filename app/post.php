@@ -17,14 +17,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function listadoPost() {
-        return $this->postText;
-      }
-
-      public function listaPost() {
-        return $this->postText;
-      }
-      public function postDe() {
+          public function postDe() {
         return $this->belongsTo(User::class, "user_id");
       }
 

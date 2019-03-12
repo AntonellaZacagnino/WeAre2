@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\post;
 use App\User;
 
 class HomeController extends Controller
@@ -25,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+      $posts = post::all();
+
         return view('home');
     }
     /**
