@@ -27,22 +27,36 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    /**
 
+    * @return \Illuminate\Http\Response
 
-    public function listadoPost() {
-        $posteos = Post::all();
-        $vac = compact("posteos");
-        return view("home", $vac);
-      }
-     /* public function index()
+    */
+    public function users()
+    {
+    $users = User::get();
+      return view('users', compact('users'));
+    }
+    /**
+
+      * @return \Illuminate\Http\Response
+
+      */
+
+      public function user($id)
       {
-        $posts = Post::orderBy("id", "DESC")->get();
-        return view("home")->with("posts", $posts);
-      }*/
-
-    public function search(Request $req) {
-        $search = $req["search"];
-        $products = User::where("name", "like", "%$search%")->get();
-        return view("search", compact("users"));
+        $user = User::find($id);
+        return view('usersView', compact('user'));
       }
+      /**
+
+      * @return \Illuminate\Http\Response
+      */
+
+      public function ajaxRequest(Request $request){
+        $user = User::find($request->user_id);
+        $response = auth()->user()->toggleFollow($user);
+        return response()->json([‘success’=>$response]);
+      }
+
 }

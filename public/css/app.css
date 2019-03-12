@@ -49,7 +49,6 @@ body {
   margin-top: 60px;
   border: 2px solid #d4d4d4;
   border-radius: 20px;
-  width: 950px;;
   height: auto;
 }
 
@@ -59,7 +58,6 @@ body {
   margin-top: 60px;
   border: 2px solid #d4d4d4;
   border-radius: 20px;
-  width: 950px;;
   height: auto;
 }
 
@@ -86,25 +84,25 @@ body {
 
 .follow-button {
   position: absolute;
-  top: 150px;
-  right: 600px;
+  top: 20px;
+  right: 20px;
 }
 
 .caja-perfil ul{
-  list-style: none; /* Remove list bullets */
+  list-style: none; 
   padding: 0;
   margin: 0;
 }
 
 .caja-profile li{
-  padding-left: 16px; 
+  padding-left: 16px;
   margin-bottom: 12px;
 }
 
 .caja-perfil li:before{
-  content: "►"; 
+  content: "►";
   padding-right: 8px;
-  color: #ce6b34; 
+  color: #ce6b34;
 }
 .card-header {
   border-top: 1px solid #e28d5e;
@@ -160,7 +158,22 @@ body {
   width: 110px;
 }
 
+.boton-buscar {
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid white;
+  margin-right: 15px;
+  height: 30px;
+  width: 30px;
+}
+
 .boton:hover {
+background: #efd2c2;
+color: white;
+box-shadow: inset 0 0 0 3px #efd2c2;
+}
+
+.boton-buscar:hover {
 background: #efd2c2;
 color: white;
 box-shadow: inset 0 0 0 3px #efd2c2;

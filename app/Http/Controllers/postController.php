@@ -55,6 +55,13 @@ public function listaPost($id) {
   $vac = compact("post");
   return view("/usuario/{id}", $vac);
 }
+
+public function listadoPost() {
+  $post = Post::all();
+
+  $vac = compact("post");
+  return view("/home", $vac);
+}
 public function eliminarPosteo(Request $formulario) {
   $idPost = $formulario["idPost"];
   $post = Post::find($idPost);

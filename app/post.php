@@ -9,24 +9,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public $guarded=[];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function listadoPost() {
-        return $this->postText . " " . $this->user_id->user;
+        return $this->postText;
       }
 
-      public function listaPost() { 
+      public function listaPost() {
         return $this->postText;
       }
       public function postDe() {
         return $this->belongsTo(User::class, "user_id");
       }
 
-      
+
       public function getPhotoAttribute(): string{
         return url("photos/". $this->attributes["photo"]);
       }
-      
+
       public function index ()
       {
         $posts = Post::orderBy("id", "DESC");
