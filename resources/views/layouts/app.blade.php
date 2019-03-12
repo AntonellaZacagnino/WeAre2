@@ -55,6 +55,10 @@
                                 </li>
                             @endif
                         @else
+                        <form class="form-inline my-2 my-lg-0">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+                          <button class="boton-buscar my-2 my-sm-0" type="submit"> <img src="https://image.flaticon.com/icons/svg/44/44514.svg" style="width:12px;height:12px;" alt=""> </button>
+                            </form>
                             <li class="menu-logueado">
                                 <a id="navbarDropdown" class="text-black" href="/usuario/{{Auth::user()->id}}" >
                                     {{ Auth::user()->user }}
@@ -90,12 +94,10 @@
             @yield('content')
         </main>
     </div>
-    <!-- Scripts 
+
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
-    @yield('scripts')-->
     <script src="{{asset("js/app.js")}}">
 
     </script>
