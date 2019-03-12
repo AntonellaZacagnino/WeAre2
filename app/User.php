@@ -8,12 +8,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanLike;
 use App\Post;
 use Auth;
 
 class User extends Authenticatable
 {
-    use Notifiable, CanFollow, CanBeFollowed;
+    use Notifiable, CanLike, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.
@@ -43,14 +44,21 @@ class User extends Authenticatable
         && !empty($this->attributes['avatar']);
     }
 
-    public function followers()
+    public function getProfilePictureAttribute() {
+        return url('avatars/' . $this->attributes['avatar']);
+     }
+
+
+    public function follows()
     {
-        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+        return $this->hasMany(Follow::class);
     }
-    public function following()
+
+    public function isFollowing($target_id)
     {
-        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+        return (bool)$this->follows()->where('target_id', $target_id)->first(['id']);
     }
+
 
 
 }

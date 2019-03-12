@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
+        GetStream\StreamLaravel\StreamLaravelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -224,6 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'FeedManager' => 'GetStream\StreamLaravel\Facades\FeedManager',
 
     ],
 

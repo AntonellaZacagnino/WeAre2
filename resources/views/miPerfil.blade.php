@@ -7,22 +7,21 @@ Mi perfil
 @section('content')
 
 <div class="titulo">
-  <h2>Perfil de {{ Auth::user()->user }}</h2>
+  <h2>Editar perfil</h2>
 </div>
 
 <br>
 <div class='caja-perfil'>
-<form action="/miPerfil" method="post" enctype="multipart/form-data">
+<form action="{{ route('miPerfil.editar') }}" method="post" enctype="multipart/form-data">
   {{ csrf_field() }}
-  <div class="container">
-    <div class="">
-      <div class="col-md-6">
-        <div class="form-profile">
-          <label class="input">Nombre:</label>
-          <input type="text" name="name" class="form-control" id="name" value="{{ Auth::user()->name}}">
-          <div class="invalid-feedback"></div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="form-profile">
+            <label class="input">Nombre:</label>
+            <input type="text" name="name" class="form-control" id="name" value="{{ Auth::user()->name}}">
+            <div class="invalid-feedback"></div>
+          </div>
         </div>
-      </div>
       <br>
       <div class="col-md-6">
         <div class="form-profile">
@@ -56,7 +55,6 @@ Mi perfil
         </div>
       </div>
       <div class="col-md-6 hidden" id="citiesCol">
-        <br>
         <div class="form-profile">
           <label class="input">Provincia:</label>
           <select class="form-control" name="cities" id="cities" value="{{ Auth::user()->city}}">
@@ -79,24 +77,32 @@ Mi perfil
         </div>
       </div>
       <br>
-      <div class="form-profile">
-        <label class="input">Foto de perfil:</label>
-        <input type="file" name="avatar" class="form-control"  value="{{ Auth::user()->avatar}}">
-      </div>
-      <br>
-      <div>
-        <button type="submit" class="boton-form">Guardar</button>
+      <div class="col-md-6">
+        <div class="form-profile">
+          <label class="input">Foto de perfil:</label>
+          <input type="file" name="avatar" class="form-control">
+          @if ($errors->has('avatar'))
+            <div class="alert alert-danger">
+              {{$errors->first('avatar') }}
+            </div>
+          @endif
+        </div>
       </div>
 
-      </div>
+    </div>
+    @if (Session::has('avatar'))
+    <div class="alert alert-success">
+      {{ Session::get('avatar') }}
+    </div>
+    @endif
+    <div>
+      <button type="submit" class="boton-form btn-lg btn-block col-md-10" style="margin-left:90px;margin-top:20px;">Guardar</button>
     </div>
   </div>
 </form>
 
-
 <br>
 <br>
-
 
 		<script src="/js/perfil.js"></script>
 

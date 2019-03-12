@@ -32,11 +32,11 @@ body {
 
 .caja-perfil {
   margin-left: 20px;
+  margin-right: 20px;
   padding: 10px;
   margin-top: 60px;
   border: 2px solid #d4d4d4;
   border-radius: 20px;
-  width: 800px;;
   height: auto;
 }
 
@@ -84,12 +84,14 @@ body {
 
 .follow-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 137px;
+  right: 500px;
+  font-size: 20px;
+  width:150px;
 }
 
 .caja-perfil ul{
-  list-style: none; 
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -257,8 +259,7 @@ ul a:hover {
 }
 
 .form-profile {
-  display: flex;
-  flex-flow: column;
+
 }
 
 .input {

@@ -20,29 +20,21 @@ Auth::routes();
  // ----------------------------------- Home --------------------------------------------------------
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('users', 'HomeController@users')->name('users');
+Route::group(['middleware' => ['auth']], function () {
 
-Route::get('user/{id}', 'HomeController@user')->name('user.view');
-
-Route::post('ajaxRequest', 'HomeController@ajaxRequest')->name('ajaxRequest');
+    Route::get('/feed', 'FeedsController@newsFeed');
+    });
 
  // --------------------------- Perfil de usuario logueado -------------------------------------------
 
 Route::get('/miPerfil', 'UserController@detalle')->middleware('auth');
 
-Route::post("/miPerfil", "UserController@editar")->middleware("auth");
+Route::get('miPerfil', 'UserController@editarPerfil')->name('miPerfil.editar');
 
-Route::post("/miPerfil", "UserController@almacenarDatos")->middleware("auth");
+Route::post('actualizar_perfil', 'UserController@actualizarPerfil')->name('miPerfil.actualizar');
 
-Route::post("upload_photo", "postController@uploadPhoto")->name("posts.store");
+Route::post('subir_foto_perfil', 'UserController@actualizarFotoPerfil')->name('miPerfil.actualizar.foto');
 
-Route::get('edit_profile', 'UserController@editProfile')->name('profile.edit');
-
-Route::post('update_profile', 'ProfileController@updateProfile')->name('profile.update');
-
-Route::post('update_profile_picture', 'ProfileController@updateProfilePicture')->name('profile.update.picture');
-
-Route::post('upload_photo', 'PostsController@uploadPhoto')->name('posts.store');
 
  // ---------------------------- Perfil de usuario ------------------------------------------------------
 
@@ -64,3 +56,9 @@ Route::get("/agregarmessage", "messagesController@agregar")->middleware("auth");
 Route::post("/agregarmessage", "messagesController@almacenar")->middleware("auth");
 
  // ---------------------------------------------------Followers---------------------------------------------
+
+ Route::group(['middleware' => ['auth']], function () {
+
+     Route::post('/follow/{user}', 'FollowController@follow');
+     Route::delete('/unfollow/{user}', 'FollowController@unfollow');
+ });
